@@ -15,6 +15,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
+
+    /*
+     * Aspect-Oriented Programming (AOP) in Spring Boot is a powerful feature that enhances modularity by
+     * handling cross-cutting concerns such as logging, security, and transaction management
+     * separately from business logic
+     */
+
     /*
      * Before is used to execute this method before the actual execution
      * AfterReturning is used to execute this method only when the actual execution is successfully completed
