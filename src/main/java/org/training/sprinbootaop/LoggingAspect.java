@@ -1,11 +1,13 @@
 package org.training.sprinbootaop;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -39,4 +41,13 @@ public class LoggingAspect {
     public void logAfterFinally(){
         log.info("GetEmployees Method Completed");
     }
+
+    @Pointcut("execution(* org.training.sprinbootaop.EmployeeController.*(..))")
+    public void userControllerMethods() {}
+
+    @AfterReturning(pointcut = "userControllerMethods()",returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result){
+        log.info("GetEmployees Method {} Returns {} ",joinPoint.getSignature().getName(),result);
+    }
+
 }
